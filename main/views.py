@@ -10,7 +10,7 @@ def home(request):
 
 
 def post_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
+    post = get_object_or_404(Post, pk=post_id)
     return render(request, 'main/post_detail.html', {'post': post})
 
 
