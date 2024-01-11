@@ -1,6 +1,5 @@
 <!-- templates/home.html -->
-
-{% for post in posts %}
+{% extends 'base.html' %} {% for post in posts %}
 <div>
   <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
   <p>{{ post.content }}</p>
