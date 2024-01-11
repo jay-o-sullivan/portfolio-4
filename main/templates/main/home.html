@@ -1,26 +1,10 @@
-{% extends 'main/base.html' %} {% block content %}
-<h2>Latest Posts</h2>
-{% for post in posts %}
+<!-- main/templates/main/home.html -->
+{% extends 'main/base.html' %} {% block content %} {% for post in posts %}
 <div>
   <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
   <p>{{ post.content }}</p>
   <p>Category: {{ post.category.name }}</p>
   <p>Posted by: {{ post.author.username }} | {{ post.created_at }}</p>
   <p>Upvotes: {{ post.upvotes }} | Downvotes: {{ post.downvotes }}</p>
-  <a href="{% url 'upvote_post' post.id %}">Upvote</a>
-  <a href="{% url 'downvote_post' post.id %}">Downvote</a>
-  <hr />
-  <h3>Comments</h3>
-  {% for comment in post.comment_set.all %}
-  <p>
-    {{ comment.content }} - {{ comment.author.username }} | {{
-    comment.created_at }}
-  </p>
-  {% endfor %}
-  <form method="post" action="{% url 'add_comment' post.id %}">
-    {% csrf_token %}
-    <textarea name="content" placeholder="Add your comment"></textarea>
-    <button type="submit">Submit Comment</button>
-  </form>
 </div>
 {% endfor %} {% endblock %}
